@@ -47,3 +47,8 @@ __pycache__/
 # Google Cloud / tokens
 **/gcloud/
 **/credentials*
+
+!docker/spark/
+!docker/spark/**
+!docker/kafka/
+!docker/kafka/**
