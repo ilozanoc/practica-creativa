@@ -17,7 +17,7 @@ Sistema de predicción de retrasos de vuelos desplegable en **Docker Compose** (
 - **Tipo**: `e2-standard-4` o superior (mínimo `e2-standard-2 × 2 nodos` en GKE)
 
 ### Datos de vuelo (obligatorio tras clonar)
-Los datos **no están en el repositorio** (están en `.gitignore`). Hay que descargarlos:
+> Los datos de vuelo **ya están en el repositorio** — no hace falta descargar nada antes de arrancar.
 ```bash
 bash resources/download_data.sh
 ```
@@ -52,7 +52,7 @@ newgrp docker
 ## Lanzamiento
 
 ```bash
-git clone https://github.com/javiersaguar/practica_creativa2.git
+git clone <URL_DE_TU_REPOSITORIO>
 cd practica_creativa2
 bash resources/download_data.sh   # OBLIGATORIO
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
@@ -105,7 +105,6 @@ docker restart airflow
 ```bash
 export PROJECT_ID="tu-project-id"
 export GKE_ZONE="europe-southwest1-a"
-export AR_REGION="europe-southwest1"
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 ```
 
@@ -124,7 +123,7 @@ gcloud container clusters create practica-k8s \
 ### Project ID en los YAMLs
 Si los YAMLs tienen el project ID del autor hardcodeado:
 ```bash
-sed -i 's|project-6577bf93-e3eb-42be-8f6|TU_PROJECT_ID|g' k8s-gke/*.yaml
+> Los YAMLs de K8s se actualizan automáticamente al ejecutar `practica.sh`.
 ```
 
 ### Firewall GCP — NodePorts K8s
@@ -183,7 +182,7 @@ El DAG `retrain_flight_delay_model` de Airflow:
 
 ### K8s: `ImagePullBackOff` con project ID incorrecto
 ```bash
-sed -i 's|project-6577bf93-e3eb-42be-8f6|TU_PROJECT_ID|g' k8s-gke/*.yaml
+> Los YAMLs de K8s se actualizan automáticamente al ejecutar `practica.sh`.
 kubectl rollout restart deployment --all
 ```
 

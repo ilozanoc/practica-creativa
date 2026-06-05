@@ -426,7 +426,7 @@ SHIM
     && ok "ConfigMap airflow-dags creado" || { err "Error creando ConfigMap"; return 1; }
 
   info "Aplicando manifests base..."
-  sed -i "s|project-6577bf93-e3eb-42be-8f6|${PROJECT_ID}|g" "$MANIFESTS"/*.yaml
+  sed -i -E "s|[a-z0-9-]+-docker\.pkg\.dev/[^/]+/practica|${REGISTRY}|g" "$MANIFESTS"/*.yaml
   for manifest in mongo cassandra minio kafka spark flask prometheus grafana mlflow airflow; do
     kubectl apply -f "$MANIFESTS/$manifest.yaml" || return 1
   done
