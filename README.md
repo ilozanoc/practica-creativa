@@ -52,7 +52,7 @@ newgrp docker
 ## Lanzamiento
 
 ```bash
-git clone <URL_DE_TU_REPOSITORIO>
+git clone "https://github.com/ilozanoc/practica-creativa"
 cd practica_creativa2
 bash resources/download_data.sh   # OBLIGATORIO
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
